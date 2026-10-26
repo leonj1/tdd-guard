@@ -12,7 +12,7 @@ concurrency:
 
 jobs:
   format:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux, x64]
     timeout-minutes: 5
     steps:
       - name: Checkout code
@@ -45,7 +45,7 @@ jobs:
         run: composer run format:check
 
   lint:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux, x64]
     timeout-minutes: 5
     steps:
       - name: Checkout code
@@ -78,7 +78,7 @@ jobs:
         run: composer run lint:check
 
   typecheck:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux, x64]
     timeout-minutes: 5
     steps:
       - name: Checkout code
@@ -97,7 +97,7 @@ jobs:
         run: npm run typecheck
 
   unit-tests:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux, x64]
     timeout-minutes: 5
     steps:
       - name: Checkout code
@@ -119,7 +119,7 @@ jobs:
         run: npm run test:unit
 
   reporter-tests:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux, x64]
     timeout-minutes: 10
     steps:
       - name: Checkout code
@@ -168,7 +168,7 @@ jobs:
 
   all-checks-pass:
     name: All Checks Pass
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux, x64]
     needs: [format, lint, typecheck, unit-tests, reporter-tests]
     steps:
       - name: All checks passed

@@ -16,7 +16,7 @@ concurrency:
 jobs:
   codeql:
     name: CodeQL Analysis
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux, x64]
     timeout-minutes: 10
     permissions:
       actions: read
@@ -40,7 +40,7 @@ jobs:
 
   npm-audit:
     name: NPM Audit
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux, x64]
     timeout-minutes: 5
     steps:
       - name: Checkout code
@@ -60,7 +60,7 @@ jobs:
 
   all-security-checks-pass:
     name: All Security Checks Pass
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux, x64]
     needs: [codeql, npm-audit]
     steps:
       - name: All security checks passed
